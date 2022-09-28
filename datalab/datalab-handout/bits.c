@@ -1,4 +1,5 @@
 /* 
+test
  * CS:APP Data Lab 
  * 
  * <Please put your name and userid here>
@@ -138,22 +139,23 @@ NOTES:
 /* 
  * bitXor - x^y using only ~ and & 
  *   Example: bitXor(4, 5) = 1
+      0100 0101
  *   Legal ops: ~ &
  *   Max ops: 14
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
+  return ~(x&y)&(~x&~y);//先找共1的掩码，再反之，再与并集相交
 }
 /* 
- * tmin - return minimum two's complement integer 
+ * tmin - return minimum two's complement  
  *   Legal ops: ! ~ & ^ | + << >>
  *   Max ops: 4
  *   Rating: 1
  */
 int tmin(void) {
-
-  return 2;
+  
+  return 1<<31;
 
 }
 //2
@@ -165,7 +167,7 @@ int tmin(void) {
  *   Rating: 1
  */
 int isTmax(int x) {
-  return 2;
+  return x&!(~(x<<1+1)|x>>31);
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
@@ -176,7 +178,7 @@ int isTmax(int x) {
  *   Rating: 2
  */
 int allOddBits(int x) {
-  return 2;
+  return  !(0xAAAAAAAA&x^0xAAAAAAAA);
 }
 /* 
  * negate - return -x 
@@ -186,7 +188,7 @@ int allOddBits(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  return ~x+1;
 }
 //3
 /* 
@@ -194,12 +196,14 @@ int negate(int x) {
  *   Example: isAsciiDigit(0x35) = 1.
  *            isAsciiDigit(0x3a) = 0.
  *            isAsciiDigit(0x05) = 0.
+     0x30=00110000
+     0x39=00111001
  *   Legal ops: ! ~ & ^ | + << >>
  *   Max ops: 15
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  return 2;
+  return !(x^0x30)&((x+6)&0xF);
 }
 /* 
  * conditional - same as x ? y : z 
@@ -209,7 +213,7 @@ int isAsciiDigit(int x) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-  return 2;
+  return ;
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
